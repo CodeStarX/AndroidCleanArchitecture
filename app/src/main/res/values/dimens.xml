@@ -1,0 +1,97 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- Card view. -->
+    <dimen name="card_corner_radius">0dp</dimen>
+    <dimen name="card_elevation">1dp</dimen>
+
+    <dimen name="movie_details_title">20dp</dimen>
+    <dimen name="movie_details_text">15dp</dimen>
+
+    <!-- Progress view. -->
+    <dimen name="progress_view_height">10dp</dimen>
+
+    <dimen name="font_size_nano">10dp</dimen>
+    <dimen name="font_size_micro">12dp</dimen>
+    <dimen name="font_size_small">14dp</dimen>
+    <dimen name="font_size_medium">16dp</dimen>
+    <dimen name="font_size_normal">18dp</dimen>
+    <dimen name="font_size_large">20dp</dimen>
+    <dimen name="font_size_xlarge">22dp</dimen>
+    <dimen name="font_size_xxlarge">26dp</dimen>
+    <dimen name="font_size_xxxlarge">30dp</dimen>
+
+    <dimen name="_1sdp">1dp</dimen>
+    <dimen name="_2sdp">2dp</dimen>
+    <dimen name="_3sdp">3dp</dimen>
+    <dimen name="_4sdp">4dp</dimen>
+    <dimen name="_5sdp">5dp</dimen>
+    <dimen name="_6sdp">6dp</dimen>
+    <dimen name="_7sdp">7dp</dimen>
+    <dimen name="_8sdp">8dp</dimen>
+    <dimen name="_9sdp">9dp</dimen>
+    <dimen name="_10sdp">10dp</dimen>
+    <dimen name="_11sdp">11dp</dimen>
+    <dimen name="_12sdp">12dp</dimen>
+    <dimen name="_13sdp">13dp</dimen>
+    <dimen name="_14sdp">14dp</dimen>
+    <dimen name="_15sdp">15dp</dimen>
+    <dimen name="_16sdp">16dp</dimen>
+    <dimen name="_18sdp">18dp</dimen>
+    <dimen name="_19sdp">19dp</dimen>
+    <dimen name="_20sdp">20dp</dimen>
+    <dimen name="_24sdp">24dp</dimen>
+    <dimen name="_25sdp">25dp</dimen>
+    <dimen name="_26sdp">26dp</dimen>
+    <dimen name="_27sdp">27dp</dimen>
+    <dimen name="_28sdp">28dp</dimen>
+    <dimen name="_30sdp">30dp</dimen>
+    <dimen name="__32sdp">-32dp</dimen>
+    <dimen name="_32sdp">32dp</dimen>
+    <dimen name="_36sdp">36dp</dimen>
+    <dimen name="_38sdp">38dp</dimen>
+    <dimen name="_40sdp">40dp</dimen>
+    <dimen name="_45sdp">45dp</dimen>
+    <dimen name="_48sdp">48dp</dimen>
+    <dimen name="_50sdp">50dp</dimen>
+    <dimen name="_55sdp">55dp</dimen>
+    <dimen name="_56sdp">56dp</dimen>
+    <dimen name="_62sdp">62dp</dimen>
+    <dimen name="_65sdp">65dp</dimen>
+    <dimen name="_66sdp">66dp</dimen>
+    <dimen name="_70sdp">70dp</dimen>
+    <dimen name="_75sdp">75dp</dimen>
+    <dimen name="_77sdp">77dp</dimen>
+    <dimen name="_80sdp">80dp</dimen>
+    <dimen name="_85sdp">85dp</dimen>
+    <dimen name="_90sdp">90dp</dimen>
+    <dimen name="_95sdp">95dp</dimen>
+    <dimen name="_100sdp">100dp</dimen>
+    <dimen name="_104sdp">104dp</dimen>
+    <dimen name="_120sdp">120dp</dimen>
+    <dimen name="_130sdp">130dp</dimen>
+    <dimen name="_135sdp">135dp</dimen>
+    <dimen name="_145sdp">145dp</dimen>
+    <dimen name="_165sdp">165dp</dimen>
+    <dimen name="_170sdp">170dp</dimen>
+    <dimen name="_185sdp">185dp</dimen>
+    <dimen name="_200sdp">200dp</dimen>
+    <dimen name="_220sdp">220dp</dimen>
+    <dimen name="_300sdp">300dp</dimen>
+    <dimen name="_320sdp">320dp</dimen>
+    <dimen name="_350sdp">350dp</dimen>
+
+    <dimen name="frame_padding">8dp</dimen>
+    <dimen name="frame_line_width">1dp</dimen>
+    <dimen name="frame_text_size">14sp</dimen>
+
+    <dimen name="line_width">3dp</dimen>
+    <dimen name="radius">6dp</dimen>
+    <dimen name="iner_radius">5dp</dimen>
+
+    <dimen name="paddingDefault">16dp</dimen>
+
+
+</resources>

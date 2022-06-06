@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_graph"
+    app:startDestination="@+id/navigation_main_fragment">
+
+   <fragment android:name="mohsen.soltanian.cleanarchitecture.ui.fragments.main.MainFragment"
+       android:id="@+id/navigation_main_fragment"
+       tools:layout="@layout/fragment_main"
+       android:label="mainFragment">
+      <action
+          android:id="@+id/action_navigation_main_fragment_to_navigation_movie_details"
+          app:destination="@id/navigation_movie_details_fragment"
+          app:enterAnim="@anim/h_fragment_enter"
+          app:exitAnim="@anim/h_fragment_exit"
+          app:popEnterAnim="@anim/h_fragment_pop_enter"
+          app:popExitAnim="@anim/h_fragment_pop_exit" />
+
+   </fragment>
+
+   <fragment android:name="mohsen.soltanian.cleanarchitecture.ui.fragments.details.MovieDetailsFragment"
+      android:id="@+id/navigation_movie_details_fragment"
+      android:label="movieDetails"
+      tools:layout="@layout/fragment_movie_details">
+
+      <argument android:name="model" app:argType="mohsen.soltanian.cleanarchitecture.core.data.models.response.Movie"/>
+
+   </fragment>
+
+</navigation>

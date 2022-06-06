@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/tools"
+    app:ignore="NamespaceTypo">
+
+    <data >
+        <variable
+            name="model"
+            type="mohsen.soltanian.cleanarchitecture.core.data.models.response.Cast" />
+        <variable
+            name="click"
+            type="mohsen.soltanian.cleanarchitecture.ui.fragments.details.adapter.CastsAdapter.ClickProxy" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="145dp"
+        android:layout_height="wrap_content"
+        card_view:cardCornerRadius="5dp"
+        card_view:cardElevation="1dp"
+        card_view:cardUseCompatPadding="true"
+        card_view:elevation="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/darkGray"
+            android:orientation="vertical"
+            android:onClick="@{() -> click.itemSelection(model)}">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="175dp"
+                android:layoutDirection="ltr">
+                <ImageView
+                    android:id="@+id/actorProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    tools:src="@color/gary"
+                    app:imageUrl="@{`https://image.tmdb.org/t/p/w500` + model.profilePath}"/>
+                
+                <!-- Used for the ripple effect on touch -->
+                <LinearLayout
+                    android:id="@+id/movieHolder"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/ripple_effect"
+                    android:onClick="@{() -> click.itemSelection(model)}"
+                    android:orientation="horizontal" />
+
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/actorName"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:padding="3dp"
+                android:textColor="#fff"
+                android:textSize="14sp"
+                tools:text="Edward Norton"
+                android:text="@{model.name}"/>
+
+            <TextView
+                android:id="@+id/actorCharacter"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:padding="3dp"
+                android:textColor="#fff"
+                android:textSize="12sp"
+                tools:text="The Narrator"
+                android:text="@{model.character}"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

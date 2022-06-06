@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="mohsen.soltanian.cleanarchitecture.ui.fragments.main.MainViewModel" />
+       <variable
+           name="movieAdapter"
+           type="mohsen.soltanian.cleanarchitecture.ui.fragments.main.adapter.MoviesAdapter" />
+        <variable
+           name="rvLayoutManager"
+           type="androidx.recyclerview.widget.StaggeredGridLayoutManager" />
+
+        <variable
+            name="searchRvLayoutManager"
+            type="androidx.recyclerview.widget.StaggeredGridLayoutManager" />
+
+       <variable
+           name="searchAdapter"
+           type="mohsen.soltanian.cleanarchitecture.ui.fragments.main.adapter.SearchMoviesAdapter" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.fragments.main.MainFragment">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layoutDirection="ltr"
+            android:background="#282828">
+
+            <LinearLayout
+                android:id="@+id/lSearchBox"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:orientation="horizontal"
+                android:layout_marginHorizontal="@dimen/_4sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:background="@drawable/bg_search_box_radius"
+                android:layoutDirection="ltr">
+
+                <EditText
+                    android:id="@+id/etSearchBox"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint="Search..."
+                    android:textColorHint="#4DFFFFFF"
+                    android:textColor="#CCFFFFFF"
+                    android:gravity="left|center_vertical"
+                    android:paddingHorizontal="@dimen/_12sdp"
+                    android:textSize="@dimen/_16sdp"
+                    android:singleLine="true"
+                    android:maxLength="45" />
+
+
+            </LinearLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/lRvParent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layoutDirection="ltr"
+                android:layout_below="@+id/lSearchBox"
+                android:layout_marginVertical="@dimen/_8sdp"
+                android:layout_marginHorizontal="@dimen/_4sdp">
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvMovies"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adapter="@{movieAdapter}"
+                    app:layoutManager="@{rvLayoutManager}"
+                    app:visible="@{viewModel.showRv}"
+                    tools:itemCount="2"
+                    tools:listitem="@layout/row_movie" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvSearchMovies"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adapter="@{searchAdapter}"
+                    app:layoutManager="@{searchRvLayoutManager}"
+                    app:data="@{viewModel.searchList}"
+                    app:visible="@{!viewModel.showRv}"
+                    tools:itemCount="2"
+                    tools:listitem="@layout/row_movie" />
+
+            </RelativeLayout>
+
+            <androidx.core.widget.ContentLoadingProgressBar
+                android:id="@+id/pbProgress"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerInParent="true"
+                android:indeterminate="true"
+                app:visible="@{viewModel.progressBar}"
+                android:indeterminateDrawable="@drawable/pb_progress"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </RelativeLayout>
+
+    </FrameLayout>
+
+</layout>

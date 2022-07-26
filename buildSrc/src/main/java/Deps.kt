@@ -68,14 +68,22 @@ object Deps {
         const val LoggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.Okhttp}"
     }
 
+
     object Test {
         const val Junit = "junit:junit:${Versions.Junit}"
         const val JunitExt = "androidx.test.ext:junit:${Versions.JunitExt}"
+        const val Junit_Ext = "androidx.test.ext:junit-ktx:${Versions.JunitExt}"
+        const val TestCoreExt = "androidx.test:core-ktx:${Versions.TestCoreExt}"
+        const val Robolectric = "org.robolectric:robolectric:${Versions.Robolectric}"
         const val EspressoCore = "androidx.test.espresso:espresso-core:${Versions.EspressoCore}"
         const val Coroutine = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.Coroutine}"
+        const val Mockk = "io.mockk:mockk:${Versions.Mockk}"
+        const val TestRules = "androidx.test:rules:${Versions.Test}"
+        const val Hamcrest = "org.hamcrest:hamcrest-library:${Versions.Hamcrest}"
+        const val Json = "org.json:json:${Versions.Json}"
         const val Okhttp = "com.squareup.okhttp3:mockwebserver:${Versions.Okhttp}"
         const val LiveData = "androidx.arch.core:core-testing:${Versions.Arch}"
+        const val kluent = "org.amshove.kluent:kluent:${Versions.kluent}"
     }
-
     const val Timber = "com.jakewharton.timber:timber:${Versions.Timber}"
 }

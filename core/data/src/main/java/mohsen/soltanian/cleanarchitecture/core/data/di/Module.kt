@@ -12,7 +12,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import mohsen.soltanian.cleanarchitecture.core.data.config.RemoteConfig
-import mohsen.soltanian.cleanarchitecture.core.data.helper.NullToEmptyStringAdapter
+import mohsen.soltanian.cleanarchitecture.core.data.extention.moshi
 import mohsen.soltanian.cleanarchitecture.core.data.network.interceptor.HttpRequestInterceptor
 import mohsen.soltanian.cleanarchitecture.core.data.scopes.ServerService
 import okhttp3.OkHttpClient
@@ -110,10 +110,7 @@ class Module {
     @Provides
     @Singleton
     fun provideMoshi(): Moshi {
-        return Moshi.Builder()
-            .add(NullToEmptyStringAdapter())
-            .addLast(KotlinJsonAdapterFactory())
-            .build()
+        return moshi
     }
 
     @Provides

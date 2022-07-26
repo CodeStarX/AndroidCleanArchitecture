@@ -2,7 +2,6 @@ package mohsen.soltanian.cleanarchitecture.base.mvi
 
 import androidx.databinding.ViewDataBinding
 import mohsen.soltanian.cleanarchitecture.libraries.framework.component.ProgressDialog
-import mohsen.soltanian.cleanarchitecture.libraries.framework.core.base.annotation.HandleBackPress
 import mohsen.soltanian.cleanarchitecture.libraries.framework.core.base.mvi.MviFragment
 import mohsen.soltanian.cleanarchitecture.libraries.framework.core.base.mvi.MviViewModel
 import mohsen.soltanian.cleanarchitecture.libraries.framework.extensions.showSnackBar
@@ -12,7 +11,6 @@ abstract class BaseMviFragment<VB : ViewDataBinding, STATE, VM : MviViewModel<ST
     MviFragment<VB, STATE, VM>() {
 
     private var progressDialog: ProgressDialog? = null
-    private var handleBackPress: HandleBackPress? = null
 
 
     override fun showProgress() {

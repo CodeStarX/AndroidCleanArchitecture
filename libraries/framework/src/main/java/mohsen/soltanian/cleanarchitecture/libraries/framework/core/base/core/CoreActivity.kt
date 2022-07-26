@@ -24,13 +24,9 @@ abstract class CoreActivity : AppCompatActivity(), ConnectionCheck.ConnectivityR
     lateinit var exitToast: Toast
     private var backPressedOnce = false
 
-    private var layout: Layout? = null
-    private var handleBackPress: HandleBackPress? = null
-    private var layoutResId = -1
-    private var lockBackPress: LockBackPress? = null
-    private var handleDoubleBackPress: HandleDoubleBackPress? = null
-    private var checkNetworkConnection: CheckNetworkConnection? = null
+    private var activityAttribute: ActivityAttribute? = javaClass.getAnnotation(ActivityAttribute::class.java)
 
+    private var layoutResId = -1
 
     abstract fun onViewReady(bundle: Bundle?)
 
@@ -59,23 +55,18 @@ abstract class CoreActivity : AppCompatActivity(), ConnectionCheck.ConnectivityR
     }
 
     private fun initAttributes() {
-        layout = javaClass.getAnnotation(Layout::class.java)
-        handleBackPress = javaClass.getAnnotation(HandleBackPress::class.java)
-        lockBackPress = javaClass.getAnnotation(LockBackPress::class.java)
-        handleDoubleBackPress = javaClass.getAnnotation(HandleDoubleBackPress::class.java)
-        checkNetworkConnection = javaClass.getAnnotation(CheckNetworkConnection::class.java)
 
-        if (layout == null) {
-            throw Exception("Activity layout is Null")
-        } else {
-            if (layout!!.value == -1) {
-                throw Exception("Activity layout value is -1")
-            } else {
-                layoutResId = layout!!.value
-            }
+        checkNotNull(activityAttribute) {
+            "you didn't use ActivityAttribute annotation for ${javaClass.name}."
         }
 
-        if (handleDoubleBackPress?.value == true) {
+        check(activityAttribute?.layoutId != -1) {
+            "you didn't use layoutId attribute for ${javaClass.name}"
+        }
+
+        layoutResId = activityAttribute?.layoutId!!
+
+        if (activityAttribute?.handleDoubleBackPress == true) {
             handleBackPress {
                 if (backPressedOnce) {
                     finish()
@@ -89,18 +80,18 @@ abstract class CoreActivity : AppCompatActivity(), ConnectionCheck.ConnectivityR
                 }
             }
         }
-        if (handleBackPress?.value == true) {
-            handleBackPress{
+        if (activityAttribute?.handleBackPress == true) {
+            handleBackPress {
                 onBackPressedCallBack()
             }
         }
-        if (lockBackPress?.value == true) {
-           handleBackPress {
-               Timber.tag("BackPress").i(": disable back press button")
-           }
+        if (activityAttribute?.lockBackPress == true) {
+            handleBackPress {
+                Timber.tag("BackPress").i(": disable back press button")
+            }
         }
 
-        if (checkNetworkConnection?.value == true) {
+        if (activityAttribute?.checkNetworkConnection == true) {
             registerNetworkReceiver()
         }
     }
@@ -112,7 +103,7 @@ abstract class CoreActivity : AppCompatActivity(), ConnectionCheck.ConnectivityR
 
     override fun onStop() {
         super.onStop()
-        if (checkNetworkConnection?.value == true) unregisterNetworkReceiver()
+        if (activityAttribute?.checkNetworkConnection == true) unregisterNetworkReceiver()
 
     }
 

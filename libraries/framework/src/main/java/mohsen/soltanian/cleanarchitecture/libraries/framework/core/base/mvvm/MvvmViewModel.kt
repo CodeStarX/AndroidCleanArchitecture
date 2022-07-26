@@ -58,7 +58,8 @@ open class MvvmViewModel : ViewModel() {
         completionHandler: (collect: T) -> Unit = {}
     ) {
         callFlow
-            .catch { passError(throwable = it) }
+            .catch {
+                passError(throwable = it) }
             .collect {
                 completionHandler.invoke(it)
             }

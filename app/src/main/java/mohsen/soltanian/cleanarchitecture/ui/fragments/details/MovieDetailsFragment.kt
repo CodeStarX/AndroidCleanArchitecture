@@ -10,7 +10,7 @@ import mohsen.soltanian.cleanarchitecture.BR
 import mohsen.soltanian.cleanarchitecture.R
 import mohsen.soltanian.cleanarchitecture.base.mvi.BaseMviFragment
 import mohsen.soltanian.cleanarchitecture.databinding.FragmentMovieDetailsBinding
-import mohsen.soltanian.cleanarchitecture.libraries.framework.core.base.annotation.Layout
+import mohsen.soltanian.cleanarchitecture.libraries.framework.core.base.annotation.FragmentAttribute
 import mohsen.soltanian.cleanarchitecture.libraries.framework.extensions.gone
 import mohsen.soltanian.cleanarchitecture.libraries.framework.extensions.toast
 import mohsen.soltanian.cleanarchitecture.libraries.framework.extensions.visible
@@ -19,7 +19,7 @@ import mohsen.soltanian.cleanarchitecture.ui.fragments.details.contract.MovieDet
 import mohsen.soltanian.cleanarchitecture.utils.Genres
 
 @SuppressLint("NonConstantResourceId")
-@Layout(value = R.layout.fragment_movie_details)
+@FragmentAttribute(layoutId = R.layout.fragment_movie_details)
 @AndroidEntryPoint
 class MovieDetailsFragment : BaseMviFragment<FragmentMovieDetailsBinding,
         MovieDetailsContract.State, MovieDetailsViewModel>() {
@@ -58,11 +58,11 @@ class MovieDetailsFragment : BaseMviFragment<FragmentMovieDetailsBinding,
     }
 
     override fun onViewReady(bundle: Bundle?) {
-        viewModel.onTriggerEvent(MovieDetailsContract.Event.fetchMovieCast(movieId = navArgs.model.movieId))
-        getBinging()?.counterFab?.count = navArgs.model.movieVote.toInt()
+        viewModel.onTriggerEvent(MovieDetailsContract.Event.fetchMovieCast(movieId = navArgs.model.movieId.toString()))
+        getBinging()?.counterFab?.count = navArgs.model.movieVote!!?.toInt()
 
         var genresStr = ""
-        navArgs.model.genreIds.forEach { item ->
+        navArgs.model.genreIds?.forEach { item ->
             genresStr += "  ${Genres.realGenres[item]}"
         }
         if (genresStr.isEmpty()) {

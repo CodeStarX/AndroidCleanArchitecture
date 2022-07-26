@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 import mohsen.soltanian.cleanarchitecture.core.data.implClasses.ServiceImp
 import mohsen.soltanian.cleanarchitecture.core.data.models.response.Movie
 import mohsen.soltanian.cleanarchitecture.core.data.services.RemoteApi.Companion.API_KEY
-import mohsen.soltanian.cleanarchitecture.core.domain.base.FlowPagingUseCase
+import mohsen.soltanian.cleanarchitecture.core.domain.base.BasePagingUseCase
 import mohsen.soltanian.cleanarchitecture.core.domain.pagingSource.MoviePagingSource
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -15,7 +15,7 @@ import javax.inject.Singleton
 @Singleton
 class MoviesUseCase @Inject constructor(
     private val serviceImp: ServiceImp
-): FlowPagingUseCase<MoviesUseCase.Params, Movie>() {
+): BasePagingUseCase<MoviesUseCase.Params, Movie>() {
 
     data class Params(val pagingConfig: PagingConfig, val sortBy: String, val apiKey: String = API_KEY)
 

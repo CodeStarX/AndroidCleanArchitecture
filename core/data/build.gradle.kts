@@ -19,11 +19,15 @@ dependencies {
     api(Deps.Timber)
     api(Deps.Coroutine.Core)
     api(Deps.Coroutine.Android)
+    api(Deps.Test.Json)
+    api(Deps.Test.Okhttp)
+    api(Deps.Test.Coroutine)
 
     debugImplementation(Deps.Chucker.Library)
     releaseImplementation(Deps.Chucker.NoLibrary)
 
-    testImplementation(Deps.Test.Junit)
-    androidTestImplementation(Deps.Test.JunitExt)
-    androidTestImplementation(Deps.Test.EspressoCore)
+    testImplementation(Deps.Test.Hamcrest)
+    testImplementation(Deps.Test.kluent)
+    testImplementation(Deps.Test.Mockk)
+    testImplementation(Deps.Test.TestRules)
 }

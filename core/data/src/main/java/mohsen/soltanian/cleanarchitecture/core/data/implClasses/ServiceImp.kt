@@ -1,5 +1,6 @@
 package mohsen.soltanian.cleanarchitecture.core.data.implClasses
 
+import androidx.annotation.VisibleForTesting
 import mohsen.soltanian.cleanarchitecture.core.data.models.response.CastsResponse
 import mohsen.soltanian.cleanarchitecture.core.data.models.response.MoviesResponse
 import mohsen.soltanian.cleanarchitecture.core.data.scopes.ServerService
@@ -10,7 +11,8 @@ import javax.inject.Singleton
 
 @Singleton
 class ServiceImp
-@Inject constructor(@ServerService retrofit: Retrofit) : RemoteApi {
+@Inject constructor(
+    @ServerService var retrofit: Retrofit) : RemoteApi {
     private val api by lazy { retrofit.create(RemoteApi::class.java) }
 
     override suspend fun getMovies(sortBy: String, page: Int, apiKey: String): MoviesResponse =

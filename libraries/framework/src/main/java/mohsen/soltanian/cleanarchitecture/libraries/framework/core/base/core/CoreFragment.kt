@@ -26,11 +26,7 @@ abstract class CoreFragment: Fragment(),ConnectionCheck.ConnectivityReceiverList
     protected var me: AppCompatActivity? = null
     private var backPressedOnce = false
     var rootView: View? = null
-    private var layout: Layout? = null
-    private var handleBackPress: HandleBackPress? = null
-    private var lockBackPress: LockBackPress? = null
-    private var handleDoubleBackPress: HandleDoubleBackPress? = null
-    private var checkNetworkConnection: CheckNetworkConnection? = null
+    private var fragmentAttribute: FragmentAttribute? = javaClass.getAnnotation(FragmentAttribute::class.java)
 
     protected var layoutResId = -1
 
@@ -53,38 +49,32 @@ abstract class CoreFragment: Fragment(),ConnectionCheck.ConnectivityReceiverList
     }
 
     private fun initAttributes() {
-        layout = javaClass.getAnnotation(Layout::class.java)
-        handleBackPress = javaClass.getAnnotation(HandleBackPress::class.java)
-        lockBackPress = javaClass.getAnnotation(LockBackPress::class.java)
-        handleDoubleBackPress = javaClass.getAnnotation(HandleDoubleBackPress::class.java)
-        checkNetworkConnection = javaClass.getAnnotation(CheckNetworkConnection::class.java)
-
-        if(layout == null) {
-            throw Exception("Fragment layout is: Null")
-        }else {
-            if(layout!!.value == -1){
-                throw Exception("Fragment layout value is: -1")
-            }else {
-                layoutResId = layout!!.value
-            }
+        checkNotNull(fragmentAttribute) {
+            "you didn't use FragmentAttribute annotation for ${javaClass.name}."
         }
-        if(handleDoubleBackPress?.value == true) {
+
+        check(fragmentAttribute?.layoutId != -1) {
+            "you didn't use layoutId attribute for ${javaClass.name}."
+        }
+        layoutResId = fragmentAttribute?.layoutId!!
+
+        if(fragmentAttribute?.handleDoubleBackPress == true) {
             handleBackPress {
                 showMessageForDoubleBackPress()
             }
         }
-        if(handleBackPress?.value == true) {
+        if(fragmentAttribute?.handleBackPress == true) {
             handleBackPress{
                 onBackPressedCallBack()
             }
         }
-        if(lockBackPress?.value == true) {
+        if(fragmentAttribute?.lockBackPress == true) {
             handleBackPress{
                 Timber.tag("BackPress").i(": disable back press button")
             }
         }
 
-        if (checkNetworkConnection?.value == true) {
+        if (fragmentAttribute?.checkNetworkConnection == true) {
             registerNetworkReceiver()
         }
     }
@@ -109,7 +99,7 @@ abstract class CoreFragment: Fragment(),ConnectionCheck.ConnectivityReceiverList
 
     override fun onStop() {
         super.onStop()
-        if (checkNetworkConnection?.value == true) unregisterNetworkReceiver()
+        if (fragmentAttribute?.checkNetworkConnection == true) unregisterNetworkReceiver()
         fragmentStop()
     }
 

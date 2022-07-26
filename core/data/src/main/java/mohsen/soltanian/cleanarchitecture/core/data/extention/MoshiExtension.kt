@@ -4,8 +4,12 @@ import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import mohsen.soltanian.cleanarchitecture.core.data.helper.NullToEmptyListAdapter
+import mohsen.soltanian.cleanarchitecture.core.data.helper.NullToEmptyStringAdapter
 
 val moshi: Moshi = Moshi.Builder()
+    .add(NullToEmptyStringAdapter.FACTORY)
+    .add(NullToEmptyListAdapter.FACTORY)
     .addLast(KotlinJsonAdapterFactory())
     .build()
 

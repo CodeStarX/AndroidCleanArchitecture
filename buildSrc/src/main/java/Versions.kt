@@ -28,6 +28,17 @@ object Versions {
 
     const val Junit = "4.13.2"
     const val JunitExt = "1.1.3"
+    const val TestCoreExt = "1.4.0"
     const val EspressoCore = "3.4.0"
+    const val Robolectric = "4.8.1"
+    const val Mockk = "1.12.1"
+    const val Assertj = "3.21.0"
     const val Test = "1.4.0"
+    const val Hamcrest = "2.2"
+    const val Json = "20210307"
+    const val Turbine = "0.7.0"
+    const val Truth = "1.1.3"
+    const val Jupiter = "5.3.1"
+    const val kluent = "1.14"
+    const val robolectric = "4.4"
 }

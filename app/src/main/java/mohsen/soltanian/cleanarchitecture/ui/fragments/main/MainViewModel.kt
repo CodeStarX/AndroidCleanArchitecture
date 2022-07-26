@@ -32,7 +32,7 @@ class MainViewModel @Inject constructor(
     }
     override fun onTriggerEvent(eventType: MainPageContract.Event) {
         when(eventType){
-            is MainPageContract.Event.fetchMovies ->{
+            is MainPageContract.Event.fetchMovies -> {
                 fetchMovies()
             }
             is MainPageContract.Event.fetchSearchMovies -> {
@@ -58,7 +58,8 @@ class MainViewModel @Inject constructor(
     }
 
     private fun fetchSearchMovies() = safeLaunch {
-        callWithProgress(callFlow = searchMovieUseCase(params = SearchMovieUseCase.Params(query = searchQuery)), completionHandler = { data ->
+        callWithProgress(callFlow = searchMovieUseCase(params = SearchMovieUseCase.Params(query = searchQuery)),
+            completionHandler = { data ->
             showRv.set(false)
             searchList.value = data.results
         })

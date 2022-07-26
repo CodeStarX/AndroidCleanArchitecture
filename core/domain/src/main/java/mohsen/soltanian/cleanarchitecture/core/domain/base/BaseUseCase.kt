@@ -14,5 +14,5 @@ abstract class BaseUseCase<in Params, ReturnType> where ReturnType : Any {
     }.flowOn(Dispatchers.IO)
 
 
-    class None
+    open class None
 }

@@ -43,10 +43,7 @@ class AppPlugin : Plugin<Project> {
             testInstrumentationRunner = Configs.AndroidJunitRunner
         }
 
-        compileOptions.apply {
-            sourceCompatibility = JavaVersion.VERSION_11
-            targetCompatibility = JavaVersion.VERSION_11
-        }
+
 
 
         packagingOptions.apply {

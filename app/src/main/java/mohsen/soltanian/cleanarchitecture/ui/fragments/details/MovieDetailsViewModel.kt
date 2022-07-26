@@ -1,5 +1,6 @@
 package mohsen.soltanian.cleanarchitecture.ui.fragments.details
 
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.MutableLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import mohsen.soltanian.cleanarchitecture.core.data.models.response.Cast
@@ -26,6 +27,7 @@ class MovieDetailsViewModel @Inject constructor(
         }
     }
 
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
     private fun fetchMovieCast() = safeLaunch {
         callWithProgress(useCase(params = MovieCastUseCase.Params(movieId = movieId))) { data ->
             list.value = data.cast

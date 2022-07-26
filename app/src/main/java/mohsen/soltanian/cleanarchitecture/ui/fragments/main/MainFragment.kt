@@ -1,6 +1,5 @@
 package mohsen.soltanian.cleanarchitecture.ui.fragments.main
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -17,16 +16,14 @@ import mohsen.soltanian.cleanarchitecture.R
 import mohsen.soltanian.cleanarchitecture.base.mvi.BaseMviFragment
 import mohsen.soltanian.cleanarchitecture.databinding.FragmentMainBinding
 import mohsen.soltanian.cleanarchitecture.libraries.framework.core.adapter.paging.PagingLoadStateAdapter
-import mohsen.soltanian.cleanarchitecture.libraries.framework.core.base.annotation.HandleDoubleBackPress
-import mohsen.soltanian.cleanarchitecture.libraries.framework.core.base.annotation.Layout
+import mohsen.soltanian.cleanarchitecture.libraries.framework.core.base.annotation.FragmentAttribute
 import mohsen.soltanian.cleanarchitecture.libraries.framework.extensions.asFlow
 import mohsen.soltanian.cleanarchitecture.ui.fragments.main.adapter.MoviesAdapter
 import mohsen.soltanian.cleanarchitecture.ui.fragments.main.adapter.SearchMoviesAdapter
 import mohsen.soltanian.cleanarchitecture.ui.fragments.main.contract.MainPageContract
 
-@SuppressLint("NonConstantResourceId")
-@Layout(value = R.layout.fragment_main)
-@HandleDoubleBackPress(value = true)
+@FragmentAttribute(layoutId = R.layout.fragment_main,
+    handleDoubleBackPress = true)
 @AndroidEntryPoint
 class MainFragment : BaseMviFragment<FragmentMainBinding, MainPageContract.State, MainViewModel>() {
 
